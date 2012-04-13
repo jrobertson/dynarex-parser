@@ -2,7 +2,13 @@
 
 # file: dynarex-parser.rb
 
-require 'rexleparser'
+require 'requestor'
+
+code = Requestor.read('http://rorbuilder.info/r/ruby') do |x| 
+  x.require 'rexleparser'
+end
+
+eval code
 
 class DynarexParser
 
