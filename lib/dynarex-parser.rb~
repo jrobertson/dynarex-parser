@@ -7,6 +7,14 @@ require 'rexleparser'
 class DynarexParser
 
   def initialize(s)
+        
+    schema = s[/schema>([^<]+)/,1]
+    puts 'schema : ' + schema.inspect
+    record_name, raw_fields = schema.match(/(\w+)\(([^\(]+)\)$/).captures
+    
+    error_found = raw_fields.split(',').include? record_name
+    raise "record name must not match a field name" if error_found
+    
     @a = parse(s)
   end
   
