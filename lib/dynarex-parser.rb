@@ -9,7 +9,6 @@ class DynarexParser
   def initialize(s)
         
     schema = s[/schema>([^<]+)/,1]
-    puts 'schema : ' + schema.inspect
     record_name, raw_fields = schema.match(/(\w+)\(([^\(]+)\)$/).captures
     
     error_found = raw_fields.split(',').include? record_name
