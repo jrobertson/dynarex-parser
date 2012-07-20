@@ -41,7 +41,8 @@ class DynarexParser
 
     if raw_records then
       node_name = raw_records[/<(\w+)/,1]
-      records = raw_records.strip.split(/(?=<#{node_name}[^>]*>)/).map {|x| RexleParser.new(x).to_a}
+      records = raw_records.split(/(?=<#{node_name}[^>]*>)/).map \
+          {|x| RexleParser.new(x.strip).to_a}
     end 
 
     [root_name, "", {}, [*summary], ['records', "",{}, *records]]

@@ -15,7 +15,7 @@ class DynarexParser
     error_found = raw_fields.split(',').include? record_name
     raise "record name must not match a field name" if error_found
     
-    @a = parse(s)
+    @a = parse(s.split(/(?=<!--)/).map {|x| x.sub(/<!--.*-->/m,'')}.join)
   end
   
   def to_a()
