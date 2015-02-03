@@ -33,9 +33,7 @@ class DynarexParser
 
     root_name = s[/<(\w+)/,1]
 
-    puts 'before summary'
     summary = RexleParser.new("<summary>#{s.fetch_node(:summary)}</summary>").to_a
-    puts 'after summary'
 
     raw_records = s.fetch_node(:records)
     records = nil
