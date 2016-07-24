@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # file: dynarex-parser.rb
 
@@ -27,7 +27,7 @@ class DynarexParser
 
     s.instance_eval{
       def fetch_node(name)
-        self[/<#{name}>(.*)<\/#{name}>/m,1]
+        self[/<#{name}[^>]+>(.*)<\/#{name}>/m,1]
       end
     }
 
